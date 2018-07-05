@@ -1,3 +1,4 @@
+using Messenger2.Pages;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,8 +11,8 @@ namespace Messenger2
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new MainPage();
+            
+			MainPage = new HomeTabbedPage();
 		}
 
 		protected override void OnStart ()
