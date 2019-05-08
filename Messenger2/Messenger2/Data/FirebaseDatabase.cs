@@ -1,34 +1,26 @@
-﻿using Firebase.Xamarin.Database;
-using Firebase.Xamarin.Database.Streaming;
-using System;
-using System.Collections.Generic;
-using System.Reactive;
+﻿using System;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Messenger2.Data
 {
     class FirebaseDatabase : IDataStore
     {
-        FirebaseClient fbDatabase;
+        IDataStore db;
 
         public FirebaseDatabase() =>
-            fbDatabase = new FirebaseClient("https://blahblah");
+            db = DependencyService.Get<IDataStore>();
 
         public async Task DeleteNodeAsync(string path) =>
-            await fbDatabase.Child(path)
-                            .DeleteAsync();
+            await db.DeleteNodeAsync(path);
 
         public IObservable<T> GetNodeAsync<T>(string path) where T : DataNode =>
-           fbDatabase.Child(path)
-                     .AsObservable<T>();
-
+            db.GetNodeAsync<T>(path);
 
         public async Task PutNodeAsync<T>(T node, string path) where T : DataNode =>
-            await fbDatabase.Child(path)
-                            .PutAsync<T>(node);
+            await db.PutNodeAsync(node, path);
 
         public async Task UpdateAsync<T>(T node, string path) where T : DataNode =>
-            await fbDatabase.Child(path)
-                            .PatchAsync<T>(node);
+            await db.UpdateAsync(node, path);
     }
 }

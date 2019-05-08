@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Messenger2.Data
 {
-    class Chat : DataNode
+    class Channel : DataNode
     {
         public string LastMessageId { get; set; }
         public List<string> MessageIds { get; set; }

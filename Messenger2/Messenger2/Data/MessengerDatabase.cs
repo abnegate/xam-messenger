@@ -45,13 +45,13 @@ namespace Messenger2.Data
         /// <param name="chat">The chat to update with the new message</param>
         /// <param name="message">The message to add</param>
         /// <returns></returns>
-        public async Task PutMessageAsync(Chat chat, Message message)
+        public async Task PutMessageAsync(Channel chat, Message message)
         {
             chat.LastMessageId = message.Id;
             chat.MessageIds.Add(message.Id);
 
             await db.PutNodeAsync(message, $"{Constants.Firebase.TABLES[MESSAGES]}/{message.Id}");
-            await db.UpdateAsync<Chat>(chat, $"{Constants.Firebase.TABLES[CHATS]}/{chat.Id}");
+            await db.UpdateAsync<Channel>(chat, $"{Constants.Firebase.TABLES[CHATS]}/{chat.Id}");
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Messenger2.Data
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IObservable<Chat> GetChatAsync(string id) =>
-             db.GetNodeAsync<Chat>($"{Constants.Firebase.TABLES[CHATS]}/{id}");
+        public IObservable<Channel> GetChatAsync(string id) =>
+             db.GetNodeAsync<Channel>($"{Constants.Firebase.TABLES[CHATS]}/{id}");
     }
 }

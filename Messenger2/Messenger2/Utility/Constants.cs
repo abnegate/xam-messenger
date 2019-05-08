@@ -6,6 +6,8 @@ namespace Messenger2.Utility
 {
     public static class Constants
     {
+        internal static int MIN_PASSWORD_LENGTH = 6;
+
         public static class Firebase
         {
             public const string FIREBASE_URL = "test";

@@ -1,33 +1,28 @@
-using Messenger2.Pages;
-using System;
+using Messenger2.Core;
+using Messenger2.Views;
+using Autofac;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Messenger2
 {
-	public partial class App : Application
-	{
-		public App ()
-		{
-			InitializeComponent();
-            
-			MainPage = new HomeTabbedPage();
-		}
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
 
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
-		}
+            MainPage = new AppShellView();
 
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
+            InitNavigation();
+        }
 
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		}
-	}
+        private Task InitNavigation()
+        {
+            var navigationService = ViewModelLocator.Container.Resolve<INavigationService>();
+            return navigationService.InitializeAsync();
+        }
+    }
 }

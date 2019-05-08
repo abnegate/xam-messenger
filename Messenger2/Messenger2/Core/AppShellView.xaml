@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:viewModels="clr-namespace:Messenger2.ViewModels"
+       xmlns:views="clr-namespace:Messenger2.Views"
+       x:Class="Messenger2.Views.AppShellView"
+       viewModels:ViewModelLocator.AutoWireViewModel="true"
+       Title="Messenger">
+    <Shell.FlyoutHeader>
+        <local:FlyoutHeader />
+    </Shell.FlyoutHeader>
+    <ShellContent Title="Chats" ContentTemplate="{DataTemplate views:ChatsView}" />
+    <ShellContent Title="Profile" ContentTemplate="{DataTemplate views:ProfileView}" /> 
+    <ShellContent Title="Settings" ContentTemplate="{DataTemplate views:SettingsView}" />
+</Shell>

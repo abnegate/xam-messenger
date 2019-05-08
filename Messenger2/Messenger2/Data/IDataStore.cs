@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Messenger2.Data
@@ -23,7 +21,7 @@ namespace Messenger2.Data
 
     public interface IUserAuth
     {
-        Task<IObservable<User>> CreateAccountWithEmail(string email, string password);
+        Task<IObservable<User>> SignUpWithEmail(string email, string password);
         Task<IObservable<User>> LoginWithEmail(string email, string password);
         Task<IObservable<User>> LoginWithFacebook();
     }

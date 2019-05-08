@@ -19,12 +19,17 @@ namespace Messenger2.Droid.Dependencies
     public class FirebaseDatabase : IDataStore
     {
 
+        public FirebaseDatabase()
+        {
+            FirebaseDatabase.GetInstance("");
+        }
+
         public Task DeleteNodeAsync(string path)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IObservable<T>> GetNodeAsync<T>(string path) where T : DataNode
+        public IObservable<T> GetNodeAsync<T>(string path) where T : DataNode
         {
             throw new NotImplementedException();
         }

@@ -14,14 +14,15 @@ namespace Messenger2.Droid
     [Activity(Label = "Messenger2", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
 
-            Forms.Init(this, bundle);
+            Forms.SetFlags("Shell_Experimental");
+            Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
     }

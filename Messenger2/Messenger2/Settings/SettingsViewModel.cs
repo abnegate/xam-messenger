@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Messenger2.ViewModels
 {
-    class SettingsViewModel : BaseViewModel
+    class SettingsViewModel : ViewModelBase
     {
     }
 }
